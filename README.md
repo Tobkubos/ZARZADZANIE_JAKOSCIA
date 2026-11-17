@@ -1,1 +1,1 @@
-# ZARZADZANIE_JAKOSCIA
+# Swipe

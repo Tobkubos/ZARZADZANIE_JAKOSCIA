@@ -1,0 +1,127 @@
+#how-to-play-panel,
+#highscores-panel,
+#options-panel,
+#pause-panel,
+#gameover-panel,
+#reward-panel {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 20;
+    overflow-y: auto;
+    pointer-events: auto;
+}
+
+#content-panel,
+#highscores-content-panel,
+#options-content-panel,
+#how-to-play-content-panel,
+#pause-content-panel,
+#gameover-content-panel,
+#reward-content-panel {
+    position: absolute;
+    width: 80%;
+    height: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10%;
+    padding: 5%;
+    z-index: 30;
+    border-radius: 10px;
+    overflow-y: auto;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+#reward-content-panel {
+    height: 80%;
+}
+
+.close-how-to-play,
+.close-highscores,
+.close-options,
+.close-pause-btn,
+.close-skin-customization-btn,
+.close-effect-customization-btn {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    z-index: 35;
+    background: none;
+    border: none;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.close-pause-btn {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.popup-header-info {
+    justify-content: center;
+    text-align: center;
+    font-size: 2rem;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 1rem;
+}
+
+.small-header {
+    font-size: 1rem;
+}
+
+.popup-content {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
+.treasure-icon {
+    display: block;
+    margin: 24px auto;
+    width: 160px;
+    max-width: 65%;
+    height: auto;
+    filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.35));
+}
+
+.shake-progress-bar {
+    text-align: center;
+    font-size: 5rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.reward-status {
+    text-align: center;
+    font-size: 1.2rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+@keyframes chest-shake {
+	0% { transform: translateX(0); }
+	20% { transform: translateX(-10px); }
+	40% { transform: translateX(10px); }
+	60% { transform: translateX(-10px); }
+	80% { transform: translateX(10px); }
+	100% { transform: translateX(0); }
+}
+
+.treasure-icon.shake {
+	animation: chest-shake 0.3s ease;
+}
+
+@keyframes chest-shake-strong {
+	0% { transform: translateX(0) rotate(0deg); }
+	15% { transform: translateX(-10px) rotate(-14deg); }
+	30% { transform: translateX(10px) rotate(1%); }
+	45% { transform: translateX(-8px) rotate(-13deg); }
+	60% { transform: translateX(8px) rotate(13deg); }
+	75% { transform: translateX(-5px) rotate(-12deg); }
+	90% { transform: translateX(5px) rotate(12deg); }
+	100% { transform: translateX(0) rotate(0deg); }
+}
+
+.treasure-icon.shake-strong {
+	animation: chest-shake-strong 0.4s ease;
+}
