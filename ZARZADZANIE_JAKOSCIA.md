@@ -53,8 +53,8 @@ System powinien zapewniać:
 - ocena jakości aplikacji na różnych urządzeniach,
 - ocena jakości interfejsu UI/UX,
 - zdiagnozowanie potencjalnych problemów i defektów projektu.
-- czas ładowania systemu
-- czas odpowiedzi z serwera Firebase
+- czas ładowania systemu - DODAĆ
+- czas odpowiedzi z serwera Firebase - DODAĆ
 
 ### 1.5. Podstawowy sposób działania
 
