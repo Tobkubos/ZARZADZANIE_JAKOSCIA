@@ -39,8 +39,8 @@ System powinien zapewniać:
 
 ## 2. Wymagania jakościowe
 
-| ID | Wymaganie | Kryterium jakości |
-|---|---|---|
+| ID   | Wymaganie | Kryterium jakości |
+|---   |---|---|
 | J-01 | Responsywność | Układ gry i rozmiar elementów dopasowują się do rozmiaru ekranu. |
 | J-02 | Sterowanie | Gest lub ruch myszy w poziomie zmienia pas maksymalnie o jeden krok i nie pozwala wyjść poza trzy pasy. |
 | J-03 | Czytelność | Ostrzeżenia, wynik, pauza i komunikat końca gry są widoczne i zrozumiałe. |
@@ -141,11 +141,15 @@ Zakres obejmuje:
   dotykowym oraz przy różnych rozmiarach okna.**Testy odporności** – sprawdzenie zachowania przy szybkich gestach,
    wielokrotnym restartowaniu, zmianie scen oraz braku połączenia z usługą
   użytkownika.
- ### 5.3. Przypadki / scenariusze testowe
-ID | Scenariusz | Oczekiwany rezultat |
- |---|---|---|
-| T-01 | Otworzyć aplikację i rozpocząć grę przyciskiem Start. | WyświT-02 | Wykonać przesunięcie w lewo i w prawo na urządzeniu dotykowym. | Postać zmienia pas zgodnie z kierunkiem gestu. |
- | T-03 | Wykonać ruch myszą w lewo i w prawo. | Sterowanie myszusługą bazy danychkonać kilka szybkich gestów podczas jednego przebiegu. | Postać nie opuszcza zakresu trzech pasów, a każdy ruch jest ograniczony do prawidłowej logiki. |
+### 5.3. Przypadki / scenariusze testowe
+
+| ID | Scenariusz | Oczekiwany rezultat |
+|---|---|---|
+| T-01 | Otworzyć aplikację i rozpocząć grę przyciskiem Start. | Wyświetla się scena gry, wynik wynosi 0, a stan przeszkód jest początkowy. |
+| T-02 | Wykonać przesunięcie w lewo i w prawo na urządzeniu dotykowym. | Postać zmienia pas zgodnie z kierunkiem gestu. |
+| T-03 | Wykonać ruch myszą w lewo i w prawo. | Sterowanie myszą działa tak samo jak sterowanie dotykiem. |
+| T-04 | Próbować przejść w lewo z lewego pasa i w prawo z prawego pasa. | Postać pozostaje odpowiednio w skrajnym pasie. |
+| T-05 | Wykonać kilka szybkich gestów podczas jednego przebiegu. | Postać nie opuszcza zakresu trzech pasów, a każdy ruch jest ograniczony do prawidłowej logiki. |
 | T-06 | Obserwować ostrzeżenie i nadchodzącą przeszkodę. | Ostrzeżenie pojawia się przed przeszkodą, a przeszkoda przechodzi przez stan ostrzeżenia, pojawienia się i spadania. |
 | T-07 | Pozostać w pasie zajętym przez spadającą przeszkodę. | Kolizja kończy bieg i wyświetla ekran Game Over. |
 | T-08 | Zmienić pas i ominąć spadającą przeszkodę. | Gra trwa dalej, a po opuszczeniu obszaru gry wynik zwiększa się o jeden. |
