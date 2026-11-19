@@ -6,7 +6,7 @@ Autor: Tobiasz Kubiak
 
 ### 1.1. Przedmiot projektu
 
-Przedmiotem projektu jest ocena i zaplanowanie jakości systemu gry Swipe.
+Przedmiotem projektu jest ocena jakości systemu gry Swipe.
 Swipe jest przeglądarkową grą zręcznościową typu endless runner zrealizowaną
 w technologii PWA (Progressive Web App).
 
@@ -25,7 +25,7 @@ interfejsu.
 ### 1.2. Cel systemu
 
 Zadaniem gracza jest omijanie spadających przeszkód poprzez przesuwanie
-postaci pomiędzy trzema możliwymi pasami. Wynik zwiększa się za każdą
+postaci pomiędzy trzema możliwymi liniami. Wynik zwiększa się za każdą
 przeszkodę, która opuści obszar gry bez kolizji z graczem. Celem gracza jest
 zdobycie jak największego wyniku w rozgrywce, a 10 najlepszych graczy zostaje
 wyświetlonych w rankingu.
@@ -33,7 +33,7 @@ wyświetlonych w rankingu.
 System powinien zapewniać:
 
 - czytelną i responsywną rozgrywkę na komputerze oraz urządzeniach mobilnych,
-- płynne sterowanie gestem przesunięcia w lewo lub w prawo,
+- płynne sterowanie myszką oraz gestem przesunięcia w lewo lub w prawo,
 - jednoznaczne informowanie o stanie gry: menu, rozgrywka, pauza i koniec gry,
 - stopniowe zwiększanie poziomu trudności,
 - możliwość zapisywania wyniku po zalogowaniu za pomocą Google Auth do bazy
@@ -57,24 +57,24 @@ System powinien zapewniać:
 ### 1.5. Podstawowy sposób działania
 
 1. Gracz uruchamia stronę i wybiera przycisk rozpoczęcia gry.
-2. Postać znajduje się w jednym z trzech pasów, początkowo w pasie środkowym.
-3. Przesunięcie palcem lub wykonanie ruchu myszą zmienia pas postaci. Ruch
+2. Postać znajduje się w jednej z trzech możliwych pozycji, początkowo na środku.
+3. Przesunięcie palcem lub wykonanie ruchu myszą zmienia pozycję gracza. Ruch
    jest ograniczony do skrajnego lewego i prawego pasa.
-4. System generuje ostrzeżenia, a następnie spadające przeszkody w losowych
+4. System ukazuje ostrzeżenia, a następnie generuje spadające przeszkody w losowych
    konfiguracjach jednego lub dwóch pasów.
 5. Kolizja kończy bieg. Przejście przeszkody zwiększa wynik, a po kolejnych
-   progach wynikowych rośnie prędkość i częstotliwość pojawiania się przeszkód.
+   progach wynikowych rośnie częstotliwość pojawiania się przeszkód.
 6. Po zakończeniu biegu gracz może wrócić do menu, odebrać nagrodę lub
    rozpocząć grę od nowa.
-7. Gracz może wejść w opcje i zalogować się na konto, aby uzyskać zapis wyniku
-   oraz dostęp do skórek i efektów.
+7. Gracz może wejść w opcje i zalogować się na konto, aby uzyskać możliwość zapisu wyniku
+   oraz mieć dostęp do skórek i efektów.
 
 ## 2. Wymagania jakościowe
 
 | ID | Wymaganie | Kryterium jakości |
 |---|---|---|
 | J-01 | Responsywność | Układ gry i rozmiar elementów dopasowują się do rozmiaru ekranu. |
-| J-02 | Sterowanie | Gest lub ruch myszy w poziomie zmienia pas maksymalnie o jeden krok i nie pozwala wyjść poza trzy pasy. |
+| J-02 | Sterowanie | Gest lub ruch myszy w poziomie zmienia pozycję maksymalnie o jeden krok i nie pozwala wyjść poza 3 pasy. |
 | J-03 | Czytelność | Ostrzeżenia, wynik, pauza i komunikat końca gry są widoczne i zrozumiałe. |
 | J-04 | Płynność | Prędkość animacji i spadania obiektów jest niezależna od częstotliwości odświeżania ekranu dzięki korekcji czasu, a skoki klatek nie powodują gwałtownych przesunięć obiektów. |
 | J-05 | Poprawność rozgrywki | Kolizja jest wykrywana tylko dla aktywnie spadającej przeszkody, a przejście przeszkody nalicza dokładnie jeden punkt. |
@@ -94,10 +94,10 @@ System uznaje się za spełniający wymagania jakościowe, gdy:
   dla dotyku i myszy,
 - ostrzeżenia są wyświetlane przed pojawieniem się przeszkód,
 - kolizja z przeszkodą kończy bieżący bieg, a ominięcie przeszkody zwiększa
-  wynik o jeden,
+  wynik o jeden punkt,
 - pauza zatrzymuje możliwość kontynuowania rozgrywki do momentu wznowienia,
-- restart przywraca stan początkowy bez pozostałości po poprzednim biegu,
-- interfejs pozostaje użyteczny na małym ekranie i na komputerze,
+- restart przywraca stan początkowy bez pozostałości po poprzedniej rozgrywce,
+- interfejs pozostaje czytelny na małym ekranie i na komputerze,
 - logowanie nie jest wymagane do rozpoczęcia gry, a po zalogowaniu wynik może
   zostać zapisany i wyświetlony w tabeli wyników.
 
@@ -107,11 +107,11 @@ System uznaje się za spełniający wymagania jakościowe, gdy:
 
 | ID | Ryzyko | Skutek |
 |---|---|---|
-| R-01 | Błędne wykrywanie kolizji na granicy pasa lub przy zmianie rozmiaru ekranu | Niesprawiedliwe zakończenie gry albo możliwość przejścia przez przeszkodę. |
+| R-01 | Błędne wykrywanie kolizji przeszkody z graczem lub przy zmianie rozmiaru ekranu | Niesprawiedliwe zakończenie gry albo możliwość przejścia przez przeszkodę. |
 | R-02 | Nieprawidłowa obsługa szybkich lub wielokrotnych gestów | Postać zmienia pas więcej razy, niż oczekuje gracz. |
 | R-03 | Rozbieżność czasu animacji między urządzeniami | Różna trudność gry i niestabilna prędkość przeszkód. |
 | R-04 | Pozostawienie starego stanu po restarcie lub zmianie sceny | Błędny wynik, przeszkody z poprzedniej rozgrywki albo nieprawidłowy stan postaci. |
-| R-05 | Niedostępność usługi logowania lub bazy danych | Brak zapisu rekordu i odczytu rankingu. |
+| R-05 | Niedostępność usługi logowania lub bazy danych | Brak zapisu rekordu / odczytu rankingu / modyfikacji wyglądu gracza. |
 | R-06 | Nieczytelny interfejs na małym ekranie | Utrudniona obsługa lub przypadkowe naciśnięcia. |
 
 ### 4.2. Ocena ryzyk
@@ -141,7 +141,7 @@ sprawdzić po potwierdzeniu poprawności podstawowej pętli gry.
 
 ### 4.4. Sposób postępowania
 
-- Dla R-01 i R-02: sprawdzić skrajne pasy, granice obiektów oraz serię
+- Dla R-01 i R-02: sprawdzić skrajne pozycje gracza, granice obiektów oraz serię
   szybkich gestów.
 - Dla R-03: wykonać rozgrywkę na komputerze i urządzeniu mobilnym oraz
   sprawdzić, czy ruch zależny od czasu zachowuje tę samą logikę.
@@ -159,7 +159,7 @@ Zakres obejmuje:
 
 - uruchamianie gry i przechodzenie pomiędzy scenami,
 - sterowanie dotykiem i myszą,
-- ograniczenie ruchu do trzech pasów,
+- ograniczenie ruchu do 3 możliwych pozycji gracza,
 - generowanie ostrzeżeń i przeszkód,
 - wykrywanie kolizji oraz naliczanie wyniku,
 - wzrost poziomu trudności,
@@ -198,7 +198,7 @@ Zakres obejmuje:
 | T-10 | Włączyć pauzę i następnie wznowić grę. | Pojawia się panel pauzy, a po wznowieniu można kontynuować bieżący bieg. |
 | T-11 | Po Game Over wybrać Restart. | Rozpoczyna się nowa rozgrywka z wyzerowanym wynikiem i usuniętymi przeszkodami. |
 | T-12 | Po Game Over wybrać Menu. | Aplikacja wraca do menu głównego bez pozostawienia widoku Game Over. |
-| T-13 | Zmienić rozmiar okna oraz uruchomić grę na ekranie mobilnym. | Plansza, postać i elementy UI pozostają widoczne oraz możliwe do obsługi. |
+| T-13 | Zmienić rozmiar okna oraz uruchomić grę na urządzeniu mobilnym. | Plansza, postać i elementy UI pozostają widoczne oraz możliwe do obsługi, a rozgrywka zostaje niezmieniona i jest spójna na różnych rozmiarach okna. |
 | T-14 | Otworzyć opcje jako użytkownik niezalogowany. | Funkcje wymagające konta są oznaczone jako niedostępne, a rozpoczęcie gry nadal działa. |
 | T-15 | Zalogować użytkownika, zakończyć rozgrywkę i otworzyć tabelę wyników. | Rekord jest zapisany dla profilu i może zostać wyświetlony w tabeli wyników. |
 
