@@ -244,6 +244,7 @@ Istnieje możliwość niepoprawnego przeliczenia pozycji w kolejnej klatce po dy
 Niektóre rozmiary ekranów mają np. zbyt małe ikonki.
 
 ### 7.3. Co można byłoby poprawić?
-Należałoby szczególnie poprawić rezponsywność interfejsu oraz zablokować zmianę rozmiaru okna gry po rozpoczęciu rozgrywki.
+Należałoby szczególnie poprawić rezponsywność interfejsu dla bardzo małych rozdzielczości urządzeń oraz 
+zablokować zmianę rozmiaru okna gry po rozpoczęciu rozgrywki.
 
 
