@@ -219,13 +219,13 @@ Dodatkowo poza samym emulatorem widoku telefonu w przeglądarce, sprawdzono wyś
 Przeprowadzono również ręcznie poprawność logowania do systemu Firebase w celu uzyskania dostępu do funkcji dla zalogowanego użytkownika.
 
 ### 6.1. Wyniki testów
-Stworzono 6 skryptów testowych.
-movement.test.js   - wykrywanie poruszania się
-obstackes.test.js  - wykrywanie kolizji
-player.test.js     - poprawne poruszanie
-resizer.test.js    - zmiana rozmiaru okna i dostosowanie rozmiaru ikonek
-scenes.test.js     - wyśiwetlanie poprawnego stanu interfejsu 
-ui_account.test.js - sprawdzanie wyświetlania interfejsu dla zalogowanego / niezalogowanego użytkownika
+Stworzono 6 skryptów testowych:
+- movement.test.js   - wykrywanie poruszania się
+- obstackes.test.js  - wykrywanie kolizji
+- player.test.js     - poprawne poruszanie
+- resizer.test.js    - zmiana rozmiaru okna i dostosowanie rozmiaru ikonek
+- scenes.test.js     - wyśiwetlanie poprawnego stanu interfejsu 
+- ui_account.test.js - sprawdzanie wyświetlania interfejsu dla zalogowanego / niezalogowanego użytkownika
 
 
 Przeprowadzono x przypadków testowych dla y.
