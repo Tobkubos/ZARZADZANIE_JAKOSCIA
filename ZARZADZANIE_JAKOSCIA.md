@@ -1,14 +1,34 @@
-# Zarządzanie jakością
+# Zarządzanie jakością systemu SWIPE
+
+Autor: Tobiasz Kubiak
 
 ## 1. Opis systemu
 
-### 1.1. Cel systemu
+### 1.1. Przedmiot projektu
 
-Swipe jest przeglądarkową grą zręcznościową typu endless runner zrealizowaną w technologii PWA (Progressive Web App). Zadaniem gracza
-jest omijanie spadających przeszkód poprzez przesuwanie postaci pomiędzy trzema możliwymi
-pasami. Wynik zwiększa się za każdą przeszkodę, która opuści obszar gry bez
-kolizji z graczem. Celem gracza jest zdobycie jak największego wyniku w rozgrywce. 
-Najlepszych 10 graczy zostaje wyświetlanych na podglądzie rankingu.
+Przedmiotem projektu jest ocena i zaplanowanie jakości systemu gry Swipe.
+Swipe jest przeglądarkową grą zręcznościową typu endless runner zrealizowaną
+w technologii PWA (Progressive Web App).
+
+Zakres opracowania obejmuje przede wszystkim jakość obsługi sterowania,
+poprawność przebiegu rozgrywki oraz wyświetlanie spójnego i intuicyjnego
+interfejsu.
+
+Środowisko oceny:
+
+- Windows 11,
+- przeglądarki Opera i Google Chrome,
+- telefon z dostępem do internetu,
+- aplikacja dostępna pod adresem
+  https://tobkubos.github.io/PGNUM-Swipe/index.html.
+
+### 1.2. Cel systemu
+
+Zadaniem gracza jest omijanie spadających przeszkód poprzez przesuwanie
+postaci pomiędzy trzema możliwymi pasami. Wynik zwiększa się za każdą
+przeszkodę, która opuści obszar gry bez kolizji z graczem. Celem gracza jest
+zdobycie jak największego wyniku w rozgrywce, a 10 najlepszych graczy zostaje
+wyświetlonych w rankingu.
 
 System powinien zapewniać:
 
@@ -16,16 +36,25 @@ System powinien zapewniać:
 - płynne sterowanie gestem przesunięcia w lewo lub w prawo,
 - jednoznaczne informowanie o stanie gry: menu, rozgrywka, pauza i koniec gry,
 - stopniowe zwiększanie poziomu trudności,
-- możliwość zapisywania postępu i wyniku po zalogowaniu za pomocą usługi Google auth do bazy danych Firebase.
+- możliwość zapisywania wyniku po zalogowaniu za pomocą Google Auth do bazy
+  danych Firebase,
+- możliwość odblokowywania i wybierania skórek oraz efektów dla postaci.
 
-### 1.2. Główni użytkownicy
+### 1.3. Główni użytkownicy
 
-- **Gracz niezalogowany** - uruchamia rozgrywkę i korzysta z podstawowych
+- **Gracz niezalogowany** – uruchamia rozgrywkę i korzysta z podstawowych
   funkcji gry. Jego postęp nie jest powiązany z profilem online.
-- **Gracz zalogowany** - dodatkowo zapisuje rekord, przegląda tabelę wyników
+- **Gracz zalogowany** – dodatkowo zapisuje rekord, przegląda tabelę wyników
   oraz odblokowuje i wybiera skórki lub efekty.
 
-### 1.3. Podstawowy sposób działania
+### 1.4. Cel jakościowy projektu
+
+- ocena jakości logiki systemu,
+- ocena jakości aplikacji na różnych urządzeniach,
+- ocena jakości interfejsu UI/UX,
+- zdiagnozowanie potencjalnych problemów i defektów projektu.
+
+### 1.5. Podstawowy sposób działania
 
 1. Gracz uruchamia stronę i wybiera przycisk rozpoczęcia gry.
 2. Postać znajduje się w jednym z trzech pasów, początkowo w pasie środkowym.
@@ -35,12 +64,15 @@ System powinien zapewniać:
    konfiguracjach jednego lub dwóch pasów.
 5. Kolizja kończy bieg. Przejście przeszkody zwiększa wynik, a po kolejnych
    progach wynikowych rośnie prędkość i częstotliwość pojawiania się przeszkód.
-6. Po zakończeniu biegu gracz może wrócić do menu / odebrać nagrodę lub rozpocząć grę od nowa.
+6. Po zakończeniu biegu gracz może wrócić do menu, odebrać nagrodę lub
+   rozpocząć grę od nowa.
+7. Gracz może wejść w opcje i zalogować się na konto, aby uzyskać zapis wyniku
+   oraz dostęp do skórek i efektów.
 
 ## 2. Wymagania jakościowe
 
-| ID   | Wymaganie | Kryterium jakości |
-|---   |---|---|
+| ID | Wymaganie | Kryterium jakości |
+|---|---|---|
 | J-01 | Responsywność | Układ gry i rozmiar elementów dopasowują się do rozmiaru ekranu. |
 | J-02 | Sterowanie | Gest lub ruch myszy w poziomie zmienia pas maksymalnie o jeden krok i nie pozwala wyjść poza trzy pasy. |
 | J-03 | Czytelność | Ostrzeżenia, wynik, pauza i komunikat końca gry są widoczne i zrozumiałe. |
@@ -55,19 +87,23 @@ System powinien zapewniać:
 
 System uznaje się za spełniający wymagania jakościowe, gdy:
 
-- gra uruchamia się w obsługiwanej przeglądarce bez błędów blokującychrozgrywkę,
- - rozpoczęcie gry wyświetla scenę rozgrywki i zeruje poprzedni wynik,
+- gra uruchamia się w obsługiwanej przeglądarce bez błędów blokujących
+  rozgrywkę,
+- rozpoczęcie gry wyświetla scenę rozgrywki i zeruje poprzedni wynik,
 - postać pozostaje w granicach trzech pasów, a sterowanie lewo/prawo działa
-  dla dotyku i myszy,ostrzeżenia są wyświetlane przed pojawieniem się przeszkód,
- - kolizja z przeszkodą kończy bieżący bieg, a ominięcie przeszkody zwiększa
+  dla dotyku i myszy,
+- ostrzeżenia są wyświetlane przed pojawieniem się przeszkód,
+- kolizja z przeszkodą kończy bieżący bieg, a ominięcie przeszkody zwiększa
   wynik o jeden,
-- pauza zatrzymuje możliwość kontynuowania rozgrywki do momentu wznowienia,restart przywraca stan początkowy bez pozostałości po poprzednim biegu,
- - interfejs pozostaje użyteczny na małym ekranie i na komputerze,
+- pauza zatrzymuje możliwość kontynuowania rozgrywki do momentu wznowienia,
+- restart przywraca stan początkowy bez pozostałości po poprzednim biegu,
+- interfejs pozostaje użyteczny na małym ekranie i na komputerze,
 - logowanie nie jest wymagane do rozpoczęcia gry, a po zalogowaniu wynik może
   zostać zapisany i wyświetlony w tabeli wyników.
 
 ## 4. Rejestr ryzyk
- ### 4.1. Najważniejsze ryzyka
+
+### 4.1. Najważniejsze ryzyka
 
 | ID | Ryzyko | Skutek |
 |---|---|---|
@@ -94,12 +130,15 @@ Ryzyko jest iloczynem obu wartości.
 
 ### 4.3. Priorytetyzacja
 
+Najważniejsze ryzyka dotyczą rozgrywki, w szczególności wykrywania kolizji
+oraz zapewnienia spójnego działania na różnych urządzeniach.
+
 W pierwszej kolejności należy sprawdzić kolizje i granice pasów (R-01).
-Następnie należy zweryfikować sterowanie, czas animacji i reset stanu (R-02,
-R-03, R-04), ponieważ te obszary bezpośrednio wpływają na uczciwość oraz
-powtarzalność rozgrywki. Integrację z kontem i responsywność należy sprawdzić
-po potwierdzeniu poprawności podstawowej pętli gry.poruszania się gracza
-płynność sterowania
+Następnie należy zweryfikować sterowanie, czas animacji i reset stanu
+(R-02, R-03, R-04), ponieważ te obszary bezpośrednio wpływają na uczciwość
+oraz powtarzalność rozgrywki. Integrację z kontem i responsywność należy
+sprawdzić po potwierdzeniu poprawności podstawowej pętli gry.
+
 ### 4.4. Sposób postępowania
 
 - Dla R-01 i R-02: sprawdzić skrajne pasy, granice obiektów oraz serię
@@ -110,8 +149,7 @@ płynność sterowania
   menu w różnych kolejnościach.
 - Dla R-05: sprawdzić działanie trybu niezalogowanego oraz zachowanie po
   nieudanym logowaniu lub braku odpowiedzi usługi.
-- Dla R-06: sprawdzić widok na małym ekranie oraz obsługę
-  elementów interfejsu.
+- Dla R-06: sprawdzić widok na małym ekranie oraz obsługę elementów interfejsu.
 
 ## 5. Plan testów
 
@@ -132,15 +170,18 @@ Zakres obejmuje:
 
 ### 5.2. Rodzaje testów
 
-- **Testy funkcjonalne** – sprawdzenie działania funkcji gry zgodnie z
-  wymaganiami i kryteriami akceptacji.
-- **Testy integracyjne** – sprawdzenie interfejsu, pętli gry,
-  zarządzania scenami oraz modułu zapisu danych.
-- **Testy użyteczności** – ocena czytelności komunikatów, ostrzeżeń,przycisków i sposobu sterowania.
- - **Testy responsywności** – porównanie działania na komputerze, ekranie
-  dotykowym oraz przy różnych rozmiarach okna.**Testy odporności** – sprawdzenie zachowania przy szybkich gestach,
-   wielokrotnym restartowaniu, zmianie scen oraz braku połączenia z usługą
+- **Testy funkcjonalne** – sprawdzenie działania funkcji gry zgodnie
+  z wymaganiami i kryteriami akceptacji.
+- **Testy integracyjne** – sprawdzenie interfejsu, pętli gry, zarządzania
+  scenami oraz modułu zapisu danych.
+- **Testy użyteczności** – ocena czytelności komunikatów, ostrzeżeń,
+  przycisków i sposobu sterowania.
+- **Testy responsywności** – porównanie działania na komputerze, ekranie
+  dotykowym oraz przy różnych rozmiarach okna.
+- **Testy odporności** – sprawdzenie zachowania przy szybkich gestach,
+  wielokrotnym restartowaniu, zmianie scen oraz braku połączenia z usługą
   użytkownika.
+
 ### 5.3. Przypadki / scenariusze testowe
 
 | ID | Scenariusz | Oczekiwany rezultat |
@@ -160,15 +201,20 @@ Zakres obejmuje:
 | T-13 | Zmienić rozmiar okna oraz uruchomić grę na ekranie mobilnym. | Plansza, postać i elementy UI pozostają widoczne oraz możliwe do obsługi. |
 | T-14 | Otworzyć opcje jako użytkownik niezalogowany. | Funkcje wymagające konta są oznaczone jako niedostępne, a rozpoczęcie gry nadal działa. |
 | T-15 | Zalogować użytkownika, zakończyć rozgrywkę i otworzyć tabelę wyników. | Rekord jest zapisany dla profilu i może zostać wyświetlony w tabeli wyników. |
- 
+
 ## 6. Realizacja i wyniki testów
-### 6.1 Wyniki testów
+
+### 6.1. Wyniki testów
 
 
 ## 7. Wnioski
 
-### 6.1 Czy zaproponowane rozwiązanie spełnia przyjęte wymagania jakościowe?
-Sprawdzić dostępność ofunkcji 
-### 6.2 Które obszary są najbardziej ryzykowne?
+### 7.1. Czy zaproponowane rozwiązanie spełnia przyjęte wymagania jakościowe?
 
-### 6.3 Co można byłoby poprawić?
+
+### 7.2. Które obszary są najbardziej ryzykowne?
+
+
+### 7.3. Co można byłoby poprawić?
+
+
