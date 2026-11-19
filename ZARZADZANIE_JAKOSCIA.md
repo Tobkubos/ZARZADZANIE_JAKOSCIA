@@ -203,9 +203,27 @@ Zakres obejmuje:
 | T-15 | Zalogować użytkownika, zakończyć rozgrywkę i otworzyć tabelę wyników. | Rekord jest zapisany dla profilu i może zostać wyświetlony w tabeli wyników. |
 
 ## 6. Realizacja i wyniki testów
+Część testów, które mogły zostać przeprowadzone automatycznie z pomocą kodu, zostało zrealizowanych z pomocą biblioteki vitest.
+Testy funkcjonalne obejmowały:
+- symulację wykrywania poruszania się za pomocą myszki oraz za pomocą dotyku.
+- sprawdzanie poprawności wykrywania kolizji z przeszkodą.
+- poprawność poruszania się po pozycjach - brak możliwości wyjścia poza obszar gry.
+- obliczanie poprawnego rozmiaru obiektów poprzez zmniejszenie / zwiększenie okna
+- poprawne wyświetlanie stanu odpowiednich ekranów gry.
+- wyświetlanie stanu zalogowanego / niezalogowanego użytkownika.
+
+W celu uruchomienia testów należy użyć komendy 'npm run test:verbose'
+
+Dodatkowo poza samym emulatorem widoku telefonu w przeglądarce, sprawdzono wyświetlanie gry na telefonie oraz tablecie.
+Przeprowadzono również ręcznie poprawność logowania do systemu Firebase w celu uzyskania dostępu do funkcji dla zalogowanego użytkownika.
 
 ### 6.1. Wyniki testów
+Przeprowadzono x przypadków testowych dla y.
+Przeprowadzono x przypadków testowych dla y.
+Przeprowadzono x przypadków testowych dla y.
+Przeprowadzono x przypadków testowych dla y.
 
+Wszystkie przeprowadzone testy przebiegły poprawnie.
 
 ## 7. Wnioski
 
@@ -213,8 +231,12 @@ Zakres obejmuje:
 
 
 ### 7.2. Które obszary są najbardziej ryzykowne?
-
+Szczególną uwagę należy zwrócić na system wykrywania kolizji oraz spójność między urządzeniami.
+Najbardziej ryzykowna jest zmiana rozmiaru okna podczas rozgrywki. 
+Istnieje możliwość niepoprawnego przeliczenia pozycji w kolejnej klatce po dynamicznej zmianie okna. 
+Niektóre rozmiary ekranów mają np. zbyt małe ikonki.
 
 ### 7.3. Co można byłoby poprawić?
+Należałoby szczególnie poprawić rezponsywność interfejsu oraz zablokować zmianę rozmiaru okna gry po rozpoczęciu rozgrywki.
 
 
