@@ -44,7 +44,7 @@ System powinien zapewniać:
 | J-01 | Responsywność | Układ gry i rozmiar elementów dopasowują się do rozmiaru ekranu. |
 | J-02 | Sterowanie | Gest lub ruch myszy w poziomie zmienia pas maksymalnie o jeden krok i nie pozwala wyjść poza trzy pasy. |
 | J-03 | Czytelność | Ostrzeżenia, wynik, pauza i komunikat końca gry są widoczne i zrozumiałe. |
-| J-04 | Płynność | Animacja przeszkód, postaci i przejść scen działa bez zatrzymań podczas typowej rozgrywki. |
+| J-04 | Płynność | Prędkość animacji i spadania obiektów jest niezależna od częstotliwości odświeżania ekranu dzięki korekcji czasu, a skoki klatek nie powodują gwałtownych przesunięć obiektów. |
 | J-05 | Poprawność rozgrywki | Kolizja jest wykrywana tylko dla aktywnie spadającej przeszkody, a przejście przeszkody nalicza dokładnie jeden punkt. |
 | J-06 | Stabilność stanu | Restart czyści przeszkody, zeruje wynik i przywraca początkowy poziom trudności. |
 | J-07 | Dostępność funkcji | Funkcje zależne od konta są oznaczone jako zablokowane dla użytkownika niezalogowanego. |
@@ -55,23 +55,19 @@ System powinien zapewniać:
 
 System uznaje się za spełniający wymagania jakościowe, gdy:
 
-- gra uruchamia się w obsługiwanej przeglądarce bez błędów blokujących
-  rozgrywkę,
-- rozpoczęcie gry wyświetla scenę rozgrywki i zeruje poprzedni wynik,
+- gra uruchamia się w obsługiwanej przeglądarce bez błędów blokującychrozgrywkę,
+ - rozpoczęcie gry wyświetla scenę rozgrywki i zeruje poprzedni wynik,
 - postać pozostaje w granicach trzech pasów, a sterowanie lewo/prawo działa
-  dla dotyku i myszy,
-- ostrzeżenia są wyświetlane przed pojawieniem się przeszkód,
-- kolizja z przeszkodą kończy bieżący bieg, a ominięcie przeszkody zwiększa
+  dla dotyku i myszy,ostrzeżenia są wyświetlane przed pojawieniem się przeszkód,
+ - kolizja z przeszkodą kończy bieżący bieg, a ominięcie przeszkody zwiększa
   wynik o jeden,
-- pauza zatrzymuje możliwość kontynuowania rozgrywki do momentu wznowienia,
-- restart przywraca stan początkowy bez pozostałości po poprzednim biegu,
-- interfejs pozostaje użyteczny na małym ekranie i na komputerze,
+- pauza zatrzymuje możliwość kontynuowania rozgrywki do momentu wznowienia,restart przywraca stan początkowy bez pozostałości po poprzednim biegu,
+ - interfejs pozostaje użyteczny na małym ekranie i na komputerze,
 - logowanie nie jest wymagane do rozpoczęcia gry, a po zalogowaniu wynik może
   zostać zapisany i wyświetlony w tabeli wyników.
 
 ## 4. Rejestr ryzyk
-
-### 4.1. Najważniejsze ryzyka
+ ### 4.1. Najważniejsze ryzyka
 
 | ID | Ryzyko | Skutek |
 |---|---|---|
@@ -93,8 +89,8 @@ Ryzyko jest iloczynem obu wartości.
 | R-02 | 4 | 4 | 16 |
 | R-03 | 3 | 4 | 12 |
 | R-04 | 2 | 3 | 6 |
-| R-05 | 1 | 1 | 1 |
-| R-06 | 1 | 2 | 2 |
+| R-05 | 1 | 3 | 3 |
+| R-06 | 2 | 2 | 4 |
 
 ### 4.3. Priorytetyzacja
 
@@ -102,8 +98,8 @@ W pierwszej kolejności należy sprawdzić kolizje i granice pasów (R-01).
 Następnie należy zweryfikować sterowanie, czas animacji i reset stanu (R-02,
 R-03, R-04), ponieważ te obszary bezpośrednio wpływają na uczciwość oraz
 powtarzalność rozgrywki. Integrację z kontem i responsywność należy sprawdzić
-po potwierdzeniu poprawności podstawowej pętli gry.
-
+po potwierdzeniu poprawności podstawowej pętli gry.poruszania się gracza
+płynność sterowania
 ### 4.4. Sposób postępowania
 
 - Dla R-01 i R-02: sprawdzić skrajne pasy, granice obiektów oraz serię
@@ -140,23 +136,16 @@ Zakres obejmuje:
   wymaganiami i kryteriami akceptacji.
 - **Testy integracyjne** – sprawdzenie interfejsu, pętli gry,
   zarządzania scenami oraz modułu zapisu danych.
-- **Testy użyteczności** – ocena czytelności komunikatów, ostrzeżeń,
-  przycisków i sposobu sterowania.
-- **Testy responsywności** – porównanie działania na komputerze, ekranie
-  dotykowym oraz przy różnych rozmiarach okna.
-- **Testy odporności** – sprawdzenie zachowania przy szybkich gestach,
-  wielokrotnym restartowaniu, zmianie scen oraz braku połączenia z usługą
+- **Testy użyteczności** – ocena czytelności komunikatów, ostrzeżeń,przycisków i sposobu sterowania.
+ - **Testy responsywności** – porównanie działania na komputerze, ekranie
+  dotykowym oraz przy różnych rozmiarach okna.**Testy odporności** – sprawdzenie zachowania przy szybkich gestach,
+   wielokrotnym restartowaniu, zmianie scen oraz braku połączenia z usługą
   użytkownika.
-
-### 5.3. Przypadki / scenariusze testowe
-
-| ID | Scenariusz | Oczekiwany rezultat |
-|---|---|---|
-| T-01 | Otworzyć aplikację i rozpocząć grę przyciskiem Start. | Wyświetla się scena gry, wynik wynosi 0, a stan przeszkód jest początkowy. |
-| T-02 | Wykonać przesunięcie w lewo i w prawo na urządzeniu dotykowym. | Postać zmienia pas zgodnie z kierunkiem gestu. |
-| T-03 | Wykonać ruch myszą w lewo i w prawo. | Sterowanie myszą działa tak samo jak sterowanie dotykiem. |
-| T-04 | Próbować przejść w lewo z lewego pasa i w prawo z prawego pasa. | Postać pozostaje odpowiednio w skrajnym pasie. |
-| T-05 | Wykonać kilka szybkich gestów podczas jednego przebiegu. | Postać nie opuszcza zakresu trzech pasów, a każdy ruch jest ograniczony do prawidłowej logiki. |
+ ### 5.3. Przypadki / scenariusze testowe
+ID | Scenariusz | Oczekiwany rezultat |
+ |---|---|---|
+| T-01 | Otworzyć aplikację i rozpocząć grę przyciskiem Start. | WyświT-02 | Wykonać przesunięcie w lewo i w prawo na urządzeniu dotykowym. | Postać zmienia pas zgodnie z kierunkiem gestu. |
+ | T-03 | Wykonać ruch myszą w lewo i w prawo. | Sterowanie myszusługą bazy danychkonać kilka szybkich gestów podczas jednego przebiegu. | Postać nie opuszcza zakresu trzech pasów, a każdy ruch jest ograniczony do prawidłowej logiki. |
 | T-06 | Obserwować ostrzeżenie i nadchodzącą przeszkodę. | Ostrzeżenie pojawia się przed przeszkodą, a przeszkoda przechodzi przez stan ostrzeżenia, pojawienia się i spadania. |
 | T-07 | Pozostać w pasie zajętym przez spadającą przeszkodę. | Kolizja kończy bieg i wyświetla ekran Game Over. |
 | T-08 | Zmienić pas i ominąć spadającą przeszkodę. | Gra trwa dalej, a po opuszczeniu obszaru gry wynik zwiększa się o jeden. |
@@ -175,7 +164,7 @@ Zakres obejmuje:
 ## 7. Wnioski
 
 ### 6.1 Czy zaproponowane rozwiązanie spełnia przyjęte wymagania jakościowe?
-
+Sprawdzić dostępność ofunkcji 
 ### 6.2 Które obszary są najbardziej ryzykowne?
 
 ### 6.3 Co można byłoby poprawić?
