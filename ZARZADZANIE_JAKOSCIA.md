@@ -212,9 +212,10 @@ Testy funkcjonalne obejmowały:
 - poprawne wyświetlanie stanu odpowiednich ekranów gry.
 - wyświetlanie stanu zalogowanego / niezalogowanego użytkownika.
 
-W celu uruchomienia testów należy użyć komendy 'npm run test:verbose'
+W celu uruchomienia testów należy użyć komendy 'npm run test:verbose' znajdując się w głównym folderze projektu.
+Wszystkie pliki skryptowe zawierające testy są zawarte w folderze **tests**.
 
-Dodatkowo poza samym emulatorem widoku telefonu w przeglądarce, sprawdzono wyświetlanie gry na telefonie oraz tablecie.
+Dodatkowo poza samym emulatorem widoku telefonu w przeglądarce, sprawdzono wyświetlanie gry na fizycznym telefonie oraz tablecie.
 Przeprowadzono również ręcznie poprawność logowania do systemu Firebase w celu uzyskania dostępu do funkcji dla zalogowanego użytkownika.
 
 ### 6.1. Wyniki testów
@@ -228,7 +229,13 @@ Wszystkie przeprowadzone testy przebiegły poprawnie.
 ## 7. Wnioski
 
 ### 7.1. Czy zaproponowane rozwiązanie spełnia przyjęte wymagania jakościowe?
-
+Zaproponowane rozwiązanie spełnia przyjęte wymagania jakościowe. 
+System jest zabezpieczony przed kluczowymi zagrożeniami oszustwa dla tego typu gier.
+Zadbano o to, aby nie było możliwości zmanipulowania rozgrywki w celu uzyskania najlepszego możliwego wyniku. 
+Rozgrywka przebiega poprawnie, zarówno na urządzeniu mobilnym jak i na PC na przeglądarce internetowej.
+System wykrywa poruszanie się myszką oraz dotykiem. 
+Punktacja jest naliczana prawidłowo, a detekcja kolizji z graczem wywołuje koniec gry.
+Synchronizacja interfejsu po zalogowaniu/wylogowaniu się przebiega natychmiastowo. 
 
 ### 7.2. Które obszary są najbardziej ryzykowne?
 Szczególną uwagę należy zwrócić na system wykrywania kolizji oraz spójność między urządzeniami.
