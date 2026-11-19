@@ -1,4 +1,4 @@
-# Zarządzanie jakością systemu SWIPE
+# Zarządzanie jakością systemu gry SWIPE
 
 Autor: Tobiasz Kubiak
 
